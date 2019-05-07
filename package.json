@@ -19,6 +19,7 @@
   "homepage": "https://github.com/tmarkel6849/miniApp-csv-generator#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "csv-writer": "^1.3.0",
     "express": "^4.16.4",
     "nodemon": "^1.19.0"
   }

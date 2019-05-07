@@ -55,11 +55,28 @@ let sampleData = {
   ]
 };
 
-// let columns = Object.keys(sampleData);
-// let data = [], string;
+const makeCSV = (data) => {
+  for (let key in data) {
+    text += `${key},`;
+  }
+  text += `
+  `;
+  //loop over all object skipping the keys
+  for (let key in data) {
+    if (Array.isArray(data[key])) {
+      if (data[key].length > 0) childObj(data[key]);
+    }
+    text += `${data[key]},`;
+  }
+}
+const childObj = (array) => {
+  for (let obj of array) {
+    for (let key in obj) {
+      if (Array.isArray(obj[key])) {
+        if (obj[key].length > 0) childObj(obj[key]);
+      }
 
-// for ( let obj in sampleData ) {
-//     for ( let key of obj ) {
-//       string
-//     }
-// }
+      text += `${obj[key]}`;
+    }
+  }
+}
