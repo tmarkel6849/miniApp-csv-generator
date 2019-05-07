@@ -1,0 +1,24 @@
+{
+  "name": "tm-csv-generator",
+  "version": "1.0.0",
+  "description": "csv generator with express backend",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tmarkel6849/miniApp-csv-generator.git"
+  },
+  "author": "Trevor Markel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tmarkel6849/miniApp-csv-generator/issues"
+  },
+  "homepage": "https://github.com/tmarkel6849/miniApp-csv-generator#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "nodemon": "^1.19.0"
+  }
+}
