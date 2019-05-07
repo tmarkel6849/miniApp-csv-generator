@@ -15,7 +15,7 @@ app.listen(port, (err, result) => {
 
 /*____________________MIDDLEWARE_____________________*/
 app.use(express.static(__dirname + '/public'));
-app.use(bodyParser.json());
+app.use(bodyParser.text());
 
 /*_____________________ROUTES________________________*/
 app.get('/', (req, res) => {
@@ -23,9 +23,10 @@ app.get('/', (req, res) => {
 });
 
 app.post('/csv', (req, res) => {
-  console.log(req.body);
-  let response = 'I came from the server!!'
-  res.send(response);
+  let clientData = req.body;
+  let dataArr = clientData.split('=');
+  console.log(dataArr[1].trim());
+ res.redirect('/');
 });
 
 
