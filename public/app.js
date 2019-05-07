@@ -1,5 +1,3 @@
-let form = document.getElementById('form');
-
 document.getElementById('form').addEventListener('submit', e => {
   e.preventDefault();
   let formValue = form.children[1].value
