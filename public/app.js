@@ -54,29 +54,50 @@ let sampleData = {
     }
   ]
 };
+let csvText = ``;
 
 const makeCSV = (data) => {
   for (let key in data) {
-    text += `${key},`;
+    if (key === 'children') break;
+    csvText += `${key},`;
   }
-  text += `
-  `;
+  csvText = csvText.slice(0, csvText.length - 1);
+  csvText += newLine();
   //loop over all object skipping the keys
   for (let key in data) {
     if (Array.isArray(data[key])) {
-      if (data[key].length > 0) childObj(data[key]);
+      if (data[key].length > 0) {
+        childObj(data[key]);
+        continue;
+      } else {
+        continue;
+      }
     }
-    text += `${data[key]},`;
+    csvText += `${data[key]},`;
   }
+  csvText = csvText.slice(0, csvText.length - 1);
 }
 const childObj = (array) => {
   for (let obj of array) {
+    csvText = csvText.slice(0, csvText.length - 1);
+    csvText += newLine();
     for (let key in obj) {
       if (Array.isArray(obj[key])) {
-        if (obj[key].length > 0) childObj(obj[key]);
+        if (obj[key].length > 0) {
+          csvText = csvText.slice(0, csvText.length - 1);
+          csvText += newLine();
+          childObj(obj[key]);
+          continue;
+        } else {
+          continue;
+        }
       }
-
-      text += `${obj[key]}`;
+      csvText += `${obj[key]},`;
     }
   }
+}
+
+const newLine = () => {
+  return `
+`;
 }
