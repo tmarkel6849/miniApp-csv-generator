@@ -32,9 +32,25 @@ app.post('/csv', (req, res) => {
   let data = sentData[1].trim();
   let parsedData = JSON.parse(data);
   makeCSV(parsedData)
-  console.log(csvText);
+
+  fs.writeFile('./generated.csv', csvText, 'utf8', (err) => {
+    if (err) {
+      console.log('There was an error!');
+      return;
+    }
+    // res.sendFile('./public/generated.csv');
+  })
+
  res.redirect('/');
 });
+
+
+
+
+
+
+
+
 
 let csvText = ``;
 
